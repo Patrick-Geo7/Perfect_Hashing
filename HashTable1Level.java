@@ -12,9 +12,9 @@ public class HashTable1Level implements IHashTable {
     int [][] hashFunction;
     int b;
     int n;
-    int N;
+    int NN;
+    int rebuildCount;
     HashFunc hashUtility= new HashFunc();
-
 
     HashTable1Level(int N){
 
@@ -23,7 +23,7 @@ public class HashTable1Level implements IHashTable {
         if (N==1){
             b=1;
         }
-        N=N;
+        NN=N;
         //initialize the hashmap , hashfunction and current number of elements in the table
         hashmap = new String[(int) Math.pow(2,b)];
         hashFunction= hashUtility.getHashFuncion(32,b);
@@ -31,21 +31,23 @@ public class HashTable1Level implements IHashTable {
     }
 
     @Override
-    public void insert(String key) {
-
+    public boolean insert(String key) {
+        rebuildCount=0;
         int index = hashUtility.getIndex(hashFunction,key);
-        if (n+1<=N){
+        if (n+1>NN){
             System.out.println(" size exceeded !!!!!");
-            return;
+            return false;
         }
         if (hashmap[index]==null ){
             System.out.println("perfectly inserted");
             hashmap[index]=key;
+            n+=1;
+            return true;
         }
         else if (Objects.equals(hashmap[index], key)){
 
             System.out.println("key already exists");
-            return;
+            return false;
         }
         else{ //collision
             System.out.println("collision!!!!!!!!!");
@@ -57,8 +59,10 @@ public class HashTable1Level implements IHashTable {
             //      else -> break
             //assign the helper hashmap to the original hashmap
             String[] helper= new String[(int) Math.pow(2,b)];
+
             while (true){
                 hashFunction= hashUtility.getHashFuncion(32,b);
+                rebuildCount+=1;
                 for (String element:hashmap) {
                     if (element != null) {
                         index = hashUtility.getIndex(hashFunction,element) ;
@@ -75,23 +79,37 @@ public class HashTable1Level implements IHashTable {
                     helper[index] = key;
                     break;
                 }
-
-
-
             }
-
             hashmap=helper.clone();
         }
+
         n+=1;
+        return true;
     }
 
+    public int getRebuildCount() {
+        return rebuildCount;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public int getNN() {
+        return NN;
+    }
 
     @Override
-    public void delete(String key) {
+    public boolean delete(String key) {
         int index=hashUtility.getIndex(hashFunction,key);
         System.out.println("elhash map index  "+ hashmap[index] + "index  "+index);
         if (Objects.equals(hashmap[index], key))
+        {
             hashmap[index]=null;
+            return true;
+        }
+        return false;
+
     }
 
     @Override
