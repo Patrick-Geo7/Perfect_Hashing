@@ -1,5 +1,5 @@
 public interface IHashTable {
-    void insert(int key);
-    void delete(int key);
-    void search(int key);
+    void insert(String key);
+    void delete(String key);
+    boolean search(String key);
 }
