@@ -29,8 +29,8 @@ public class Service {
     return hashedKey;}
     public String StringHashedKey(int[] hashedkey){
         String StringHashedKey="";
-        for(int i=0;i<hashedkey.length;i++){
-            StringHashedKey+=(char)hashedkey[i];
+        for (int j : hashedkey) {
+            StringHashedKey += (char) j;
         }
     return StringHashedKey;}
     public int InthashedKey(String StringHashedKey){
