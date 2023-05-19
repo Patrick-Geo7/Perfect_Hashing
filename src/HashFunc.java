@@ -6,7 +6,7 @@ import java.util.random.*;
 
 public class HashFunc {
     int b;
-    int u=32;
+    int u;
     //a matrix for generating a hash function will be of the size b-by-u 0/1 matrix
     public HashFunc(int u, int b){
         this.b = b;
