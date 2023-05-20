@@ -29,10 +29,11 @@ public class HashTable2Levels implements IHashTable{
     @Override
     public boolean insert(String key) {
         rebuildCount=0;
-        if (n+1>NN){
-            System.out.println(" size exceeded !!!!!");
-            return false;
-        }
+
+//        if (n+1>NN){
+//            System.out.println(" size exceeded !!!!!");
+//            return false;
+//        }
 
         int index1 = hashUtility.getIndex(hashFunction,key);
         HashTable1Level hash = hashmap[index1];
