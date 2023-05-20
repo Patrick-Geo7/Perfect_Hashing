@@ -1,29 +1,45 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Dictionnary implements IDictionnary{
-    /**
-     * @param word 
-     * @return
-     */
+
+    IHashTable hashTable;
+    Dictionnary(String name, int n){
+        if(name.compareTo("oneLevel")==0){
+            hashTable = new HashTable1Level(n);
+        }
+        else{
+            hashTable = new HashTable2Levels(n);
+        }
+    }
     @Override
-    public boolean insert(String word) {
-        return false;
+    public boolean insert(String key) {
+        hashTable.insert(key);
+
+        //edit the return value
+        return true;
     }
 
     /**
-     * @param word 
+     * @param
      * @return
      */
     @Override
-    public boolean delete(String word) {
-        return false;
+    public boolean delete(String key) {
+        hashTable.delete(key);
+
+        //edit the return value
+        return true;
     }
 
     /**
-     * @param word 
+     * @param
      * @return
      */
     @Override
-    public boolean search(String word) {
-        return false;
+    public boolean search(String key) {
+        return hashTable.search(key);
     }
 
     /**
@@ -31,8 +47,35 @@ public class Dictionnary implements IDictionnary{
      * @return
      */
     @Override
-    public int[] batchinsert(String path) {
-        return new int[0];
+    public int[] batchInsert(String path) {
+        int[] counters = {0,0};
+        int insert_count = 0;
+        int exist_count = 0;
+
+        try{
+            File myfile = new File(path);
+            Scanner myReader = new Scanner(myfile);
+            while(myReader.hasNextLine()){
+                String word = myReader.nextLine();
+                boolean inserted = hashTable.insert(word);
+                if(inserted){
+                    insert_count = insert_count+1;
+                }
+                else
+                    exist_count = exist_count+1;
+            }
+            myReader.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        counters[0] = insert_count;
+        counters[1] = exist_count;
+
+        // index 0 inserted ... index 1 existed
+        return counters;
+
     }
 
     /**
@@ -40,7 +83,32 @@ public class Dictionnary implements IDictionnary{
      * @return
      */
     @Override
-    public int[] batchdelete(String path) {
-        return new int[0];
+    public int[] batchDelete(String path) {
+        int[] counters = {0,0};
+        int deleted_count=0;
+        int notExist_count=0;
+
+        try{
+            File myfile = new File(path);
+            Scanner myReader = new Scanner(myfile);
+            while(myReader.hasNextLine()){
+                String word = myReader.nextLine();
+                boolean deleted = hashTable.delete(word);
+                if(deleted){
+                    deleted_count = deleted_count+1;
+                }
+                else
+                    notExist_count = notExist_count+1;
+            }
+            myReader.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        counters[0] = deleted_count;
+        counters[1] = notExist_count;
+        return counters;
+
     }
 }
