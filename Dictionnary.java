@@ -15,10 +15,10 @@ public class Dictionnary implements IDictionnary{
     }
     @Override
     public boolean insert(String key) {
-        hashTable.insert(key);
+        return hashTable.insert(key);
 
         //edit the return value
-        return true;
+
     }
 
     /**
@@ -27,10 +27,10 @@ public class Dictionnary implements IDictionnary{
      */
     @Override
     public boolean delete(String key) {
-        hashTable.delete(key);
+        return hashTable.delete(key);
 
         //edit the return value
-        return true;
+
     }
 
     /**
