@@ -108,6 +108,7 @@ public class HashTable1Level implements IHashTable {
         if (Objects.equals(hashmap[index], key))
         {
             hashmap[index]=null;
+            n-=1;
             return true;
         }
         return false;

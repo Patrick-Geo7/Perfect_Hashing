@@ -123,14 +123,14 @@ public class HashTablesTest {
         end = System.nanoTime();
         long hashTable_1_Time = end - start;
 
-//        start = System.nanoTime();
-//        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
-//        end = System.nanoTime();
-//        long hashTable_2_Time = end - start;
+        start = System.nanoTime();
+        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
+        end = System.nanoTime();
+        long hashTable_2_Time = end - start;
 
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
-//        assertArrayEquals(Avl,hashTable_2);
+        assertArrayEquals(Avl,hashTable_2);
 
 
 
@@ -166,14 +166,14 @@ public class HashTablesTest {
         end = System.nanoTime();
         long hashTable_1_Time = end - start;
 
-//        start = System.nanoTime();
-//        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
-//        end = System.nanoTime();
-//        long hashTable_2_Time = end - start;
+        start = System.nanoTime();
+        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
+        end = System.nanoTime();
+        long hashTable_2_Time = end - start;
 
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
-//        assertArrayEquals(Avl,hashTable_2);
+        assertArrayEquals(Avl,hashTable_2);
 
 
 
@@ -209,14 +209,14 @@ public class HashTablesTest {
         end = System.nanoTime();
         long hashTable_1_Time = end - start;
 
-//        start = System.nanoTime();
-//        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
-//        end = System.nanoTime();
-//        long hashTable_2_Time = end - start;
+        start = System.nanoTime();
+        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
+        end = System.nanoTime();
+        long hashTable_2_Time = end - start;
 
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
-//        assertArrayEquals(Avl,hashTable_2);
+        assertArrayEquals(Avl,hashTable_2);
 
 
 

@@ -61,7 +61,9 @@ public class HashTable2Levels implements IHashTable{
                 System.out.println("new hash table size");
                 rebuildCount+=1;
             }
-
+            else{
+                hashmap[index1].hashmap= new String[(int)pow(2,hash.b)];
+            }
             for (String element:hash.hashmap) {
                 if (element != null) {
                     hashmap[index1].insert(element);
@@ -89,6 +91,7 @@ public class HashTable2Levels implements IHashTable{
         int index2= hashUtility.getIndex(hash.hashFunction,key);
         if (Objects.equals(hash.hashmap[index2], key)){
             hash.hashmap[index2]=null;
+            n-=1;
             return true;
         }
         return false;
