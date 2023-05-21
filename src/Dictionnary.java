@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Dictionnary implements IDictionnary{
 
     IHashTable hashTable;
+    int collisions = 0;
     Dictionnary(String name, int n){
         if(name.compareTo("oneLevel")==0){
             hashTable = new HashTable1Level(n);
@@ -17,7 +18,10 @@ public class Dictionnary implements IDictionnary{
     }
     @Override
     public boolean insert(String key) {
-        return hashTable.insert(key);
+
+        boolean flag = hashTable.insert(key);
+        collisions += hashTable.getRebuildCount();
+        return flag;
 
         //edit the return value
 
@@ -115,7 +119,9 @@ public class Dictionnary implements IDictionnary{
     }
 
     @Override
-    public int getRebuildCount() {
-        return 0;
+    public int collisions() {
+        return this.collisions;
     }
+
+
 }

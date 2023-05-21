@@ -35,7 +35,7 @@ public class HashTable1Level implements IHashTable {
         //initialize the hashmap , hashfunction and current number of elements in the table
         hashmap = new String[(int) Math.pow(2,b)];
         hashFunction= hashUtility.getHashFuncion(32,b);
-        printHashFunction();
+//        printHashFunction();
         n=0;
     }
 
@@ -73,9 +73,9 @@ public class HashTable1Level implements IHashTable {
             while (true){
                 helper= new String[(int) Math.pow(2,b)];
                 hashFunction= hashUtility.getHashFuncion(32,b);
-                System.out.println("hash functionnnnnnnnnnn");
-                printHashFunction();
-                System.out.println(" no of rebuilds"+ rebuildCount);
+//                System.out.println("hash functionnnnnnnnnnn");
+//                printHashFunction();
+//                System.out.println(" no of rebuilds"+ rebuildCount);
                 rebuildCount+=1;
                 boolean flag =false;
                 for (String element:hashmap) {
@@ -97,22 +97,27 @@ public class HashTable1Level implements IHashTable {
                         break;
                     }
                     else if (Objects.equals(helper[index], key)){
-                        System.out.println("same");
+//                        System.out.println("same");
                         break;
                     }
                     else{
                         System.out.println(helper[index]+"   "+key);
                         System.out.println(hashUtility.getIndex(hashFunction, key));
                         System.out.println(hashUtility.getIndex(hashFunction, helper[index]));
+//                        printHashFunction();
+//                        printt();
+//                        System.out.println(NN);
                         System.out.println("hablllllllllllllllllll");
                     }
                 }
             }
             hashmap=helper.clone();
+
+            n+=1;
+            return true;
         }
 //        printSize();
-        n+=1;
-        return true;
+
     }
     void printHashFunction(){
         for (int i=0;i<b;i++){
@@ -139,26 +144,26 @@ public class HashTable1Level implements IHashTable {
         // Adding elements to the Set
         // using add() method
 //        String debug[]=new String[NN];int i=0;
-        for (int j=0;j<Math.pow(2,b);j++){
+        for (int j=0;j<Math.pow(2,b);j++) {
 
-            if (hashmap[j]!=null) {
+//            if (hashmap[j]!=null) {
                 size++;
-                boolean found=false;
-                for (String s:debug)
-                {
+                boolean found = false;
+                for (String s : debug) {
 
-                    if (s.equals(hashmap[j])) {
+                    if (hashmap!=null && s.equals(hashmap[j])) {
                         System.out.print("found");
                         System.out.println("        " + j + " " + hashmap[j]);
-                        found=true;
+                        found = true;
                     }
 
                 }
-                if (!found){
+                if (!found && hashmap[j]!=null) {
 
-                    debug.add( hashmap[j]);
-                    System.out.println("        " + j + " " + hashmap[j]);}
-            }
+                    debug.add(hashmap[j]);
+                    System.out.println("        " + j + " " + hashmap[j]);
+                }
+//        }
 
         }
         System.out.println("size isssss" + debug.size());
@@ -204,7 +209,7 @@ public class HashTable1Level implements IHashTable {
     @Override
     public boolean delete(String key) {
         int index=hashUtility.getIndex(hashFunction,key);
-        System.out.println("elhash map index  "+ hashmap[index] + "index  "+index);
+//        System.out.println("elhash map index  "+ hashmap[index] + "index  "+index);
         if (Objects.equals(hashmap[index], key))
         {
             hashmap[index]=null;
