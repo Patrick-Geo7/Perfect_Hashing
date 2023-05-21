@@ -1,6 +1,8 @@
 package src;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static java.lang.Math.*;
 import static java.lang.Math.log;
@@ -14,6 +16,87 @@ public class HashTable2Levels implements IHashTable{
     HashTable1Level[] hashmap;
     HashFunc hashUtility= new HashFunc();
     int rebuildCount;
+    HashTable1Level[] get_hashtables(){
+        return  hashmap;
+    }
+    public void printSize() {
+        System.out.println("printttt");
+        Set<String> debug = new HashSet<String>();
+        int size = 0;
+        for (int i = 0; i < pow(2, b); i++) {
+//            System.out.println(i + " ");
+
+            for (int j = 0; j < Math.pow(2, hashmap[i].b); j++) {
+
+                if (hashmap[i].hashmap[j] != null) {
+                    size++;
+                    boolean found = false;
+                    for (String s : debug) {
+                        if (s != null) {
+
+
+                            if (s.equals(hashmap[i].hashmap[j])) {
+//                                System.out.print("found");
+//                                System.out.println("        " + j + " " + hashmap[i].hashmap[j]);
+                                found = true;
+                            }
+                        }
+
+                    }
+                    if (!found) {
+
+                        debug.add(hashmap[i].hashmap[j]);
+//                        System.out.println("        " + j + " " + hashmap[i].hashmap[j]);}
+                    }
+
+                }
+
+            }
+
+        }
+        System.out.println("size isssss" + debug.size());
+        System.out.println("size isssss" + size);
+    }
+
+    @Override
+    public void printt(){
+//        System.out.println("printttt");
+        System.out.println("printttt");
+        Set<String> debug= new HashSet<String>();
+        int size=0;
+        for (int i=0;i< pow (2,b);i++){
+            System.out.println(i+" ");
+
+            for (int j=0;j<Math.pow(2,hashmap[i].b);j++){
+
+                if (hashmap[j]!=null) {
+                    size++;
+                    boolean found=false;
+                    for (String s:debug)
+                    {
+                        if (s!=null) {
+
+
+                            if (s.equals(hashmap[i].hashmap[j])) {
+                                System.out.print("found");
+                                System.out.println("        " + j + " " + hashmap[i].hashmap[j]);
+                                found = true;
+                            }
+                        }
+
+                    }
+                    if (!found){
+
+                        debug.add( hashmap[i].hashmap[j]);
+                        System.out.println("        " + j + " " + hashmap[i].hashmap[j]);}
+                }
+
+            }
+
+        }
+        System.out.println("size isssss" + debug.size());
+        System.out.println("size isssss" + size);
+    }
 
     HashTable2Levels(int N){
         // get the number of bits required to represent N
@@ -30,6 +113,7 @@ public class HashTable2Levels implements IHashTable{
 
     @Override
     public boolean insert(String key) {
+        System.out.println("n="+n);
         rebuildCount=0;
 
 //        if (n+1>NN){
@@ -44,6 +128,8 @@ public class HashTable2Levels implements IHashTable{
         if (hash.hashmap[index2]==null){
             System.out.println("inserted perfectly");
             hash.hashmap[index2]=key;
+            printSize();
+//            System.out.println("n="+n);
             n+=1;
             return true;
         }
@@ -54,10 +140,10 @@ public class HashTable2Levels implements IHashTable{
         else{
             // collision
             // 10   128  11
-
+            
             if (hash.b < (int) ceil(log(pow(hash.n+1,2))/log(2)))
             {
-                hashmap[index1]= new HashTable1Level(hash.n);
+                hashmap[index1]= new HashTable1Level(hash.n+1);
                 System.out.println("new hash table size");
                 rebuildCount+=1;
             }
@@ -70,10 +156,22 @@ public class HashTable2Levels implements IHashTable{
                     rebuildCount+=hashmap[index1].getRebuildCount();
                 }
             }
-            hashmap[index1].insert(key);
-        }
-        n+=1;
-        return true;
+            boolean bool=hashmap[index1].insert(key);
+//            hashmap[index1].insert(key);
+            if (bool) {
+                n+=1;
+                printSize();
+                System.out.println("inserted after collision");
+//                System.out.println("n="+n);
+                return true;
+            }
+            else{
+                System.out.println("couldn't insert after collision");
+                return false;
+            }
+            }
+
+
     }
 
     public int getRebuildCount() {
@@ -96,6 +194,13 @@ public class HashTable2Levels implements IHashTable{
         }
         return false;
 
+    }
+
+
+
+    @Override
+    public String[] getHashmap() {
+        return new String[0];
     }
 
     @Override

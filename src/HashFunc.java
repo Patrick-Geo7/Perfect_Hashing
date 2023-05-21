@@ -11,8 +11,8 @@ public class HashFunc {
     public int[][] getHashFuncion(int u,int b){
         this.u = u;
         this.b = b;
-        System.out.println("u"+this.getB());
-        System.out.println("v"+this.getU());
+//        System.out.println("u"+this.getB());
+//        System.out.println("v"+this.getU());
         int[][] hx=new int [this.getB()][this.getU()];
         Random rand = new Random();
         for(int i = 0; i<this.getB(); i++){
@@ -28,11 +28,25 @@ public class HashFunc {
         return this.b;
     }
     //converts string to a number
-    private static int hash(String str) {
+    public static int hash(String str) {
+//        int hash = 7;
+//        for (int i = 0; i < str.length(); i++) {
+//            hash = hash*31 + (int) str.charAt(i);
+//        }
+//        int hash=0;
+//        int m=1;
+//        for (int i = 0; i < str.length(); i++) {
+//            hash+=
+//        }
+//        HashStrings hasher= new HashStrings();
+//        String sha256Hash = hasher.calculateSHA256(str);
+//        return Integer.parseInt(sha256Hash, 16);
         int hash = 0;
         for (int i = 0; i < str.length(); i++) {
             hash = str.charAt(i) + ((hash << 5) - hash);
         }
+//        hash =str.hashCode();
+
         return hash;
     }
     //converts number to its binary
@@ -41,10 +55,13 @@ public class HashFunc {
     }
     // converts binary to its vector
     private static int[] keyVector(String binaryString){
-        int[] binaryVector = new int[binaryString.length()];
+        int[] binaryVector = new int[32];
         int i=0;
-        while(i<binaryString.length()){
-            binaryVector[i] = binaryString.charAt(i)-'0';
+        while (i<32-binaryString.length()){
+            binaryVector[i++]=0;
+        }
+        while(i<32){
+            binaryVector[i] = binaryString.charAt(i-(32-binaryString.length()))-'0';
             i++;
         }
         return binaryVector;}
@@ -53,9 +70,11 @@ public class HashFunc {
     private static int[] hashedKey(int[][] hx, int[] key){
         int[] hashedKey = new int[hx.length];
         for(int i=0;i<hx.length;i++){
-            for(int j=0;j<key.length;j++){
-                hashedKey[i] = (hashedKey[i] + hx[i][j]*key[j])%2;
+
+            for(int j=0;j<32;j++){
+                hashedKey[i] = (hashedKey[i] + hx[i][j]*key[j+(32-key.length)])%2;
             }
+
         }
         return hashedKey;}
 
