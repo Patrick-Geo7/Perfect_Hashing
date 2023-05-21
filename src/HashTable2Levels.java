@@ -69,7 +69,7 @@ public class HashTable2Levels implements IHashTable{
 
             for (int j=0;j<Math.pow(2,hashmap[i].b);j++){
 
-                if (hashmap[j]!=null) {
+                if (hashmap[i].hashmap[j]!=null) {
                     size++;
                     boolean found=false;
                     for (String s:debug)
@@ -92,7 +92,6 @@ public class HashTable2Levels implements IHashTable{
                 }
 
             }
-
         }
         System.out.println("size isssss" + debug.size());
         System.out.println("size isssss" + size);
@@ -113,28 +112,27 @@ public class HashTable2Levels implements IHashTable{
 
     @Override
     public boolean insert(String key) {
+        System.out.println("inserttttttttttttttttttttttttt");
         System.out.println("n="+n);
         rebuildCount=0;
-
-//        if (n+1>NN){
-//            System.out.println(" size exceeded !!!!!");
-//            return false;
-//        }
-
         int index1 = hashUtility.getIndex(hashFunction,key);
         HashTable1Level hash = hashmap[index1];
-
         int index2= hashUtility.getIndex(hash.hashFunction,key);
+
         if (hash.hashmap[index2]==null){
             System.out.println("inserted perfectly");
             hash.hashmap[index2]=key;
+//            hashmap[index1].hashmap[index2]=key;
+
             printSize();
 //            System.out.println("n="+n);
             n+=1;
+            System.out.println("n="+n);
             return true;
         }
         else if((Objects.equals(hash.hashmap[index2], key))){
             System.out.println("key already exists");
+            System.out.println("n="+n);
             return false;
         }
         else{
@@ -146,34 +144,50 @@ public class HashTable2Levels implements IHashTable{
                 hashmap[index1]= new HashTable1Level(hash.n+1);
                 System.out.println("new hash table size");
                 rebuildCount+=1;
+
             }
             else{
                 hashmap[index1].hashmap= new String[(int)pow(2,hash.b)];
             }
+
             for (String element:hash.hashmap) {
                 if (element != null) {
                     hashmap[index1].insert(element);
                     rebuildCount+=hashmap[index1].getRebuildCount();
                 }
             }
+            System.out.println("n="+n);
+            System.out.println("-------------------------------------------------------------------------------------------------");
+            System.out.println("size before insert");
+            printSize();
+            printt();
             boolean bool=hashmap[index1].insert(key);
+            System.out.println("-------------------------------------------------------------------------------------------------");
+            System.out.println("size after inserrt");
+            printSize();
+            System.out.println("the key"+key + "index" + index1);
+            printt();
+
+
 //            hashmap[index1].insert(key);
             if (bool) {
                 n+=1;
-                printSize();
-                System.out.println("the key"+key);
-                printt();
                 System.out.println("inserted after collision");
+//                printSize();
+//                System.out.println("the key"+key + "index" + index1);
+//                printt();
+
+
 //                System.out.println("n="+n);
+                System.out.println("n="+n);
                 return true;
             }
             else{
-                System.out.println("couldn't insert after collision");
+                System.out.println("couldn't insert after collision key already exist");
+                System.out.println("n="+n);
                 return false;
             }
-            }
-
-
+        }
     }
 
     public int getRebuildCount() {

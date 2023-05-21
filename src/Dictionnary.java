@@ -113,4 +113,9 @@ public class Dictionnary implements IDictionnary{
         return counters;
 
     }
+
+    @Override
+    public int getRebuildCount() {
+        return 0;
+    }
 }

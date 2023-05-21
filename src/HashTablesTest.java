@@ -48,7 +48,8 @@ public class HashTablesTest {
         int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
 //        end = System.nanoTime();
 //        long hashTable_2_Time = end - start;
-        hashTable_2_Dict.hashTable.printt();
+//        hashTable_2_Dict.hashTable.printt();
+//        System.out.println("nfinal="+hashTable_2_Dict.hashTable.getN());
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
         assertArrayEquals(Avl,hashTable_2);
@@ -93,6 +94,8 @@ public class HashTablesTest {
 
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
+        System.out.println(hashTable_1_Dict.hashTable.getN());
+//        System.out.println("nfinal="+hashTable_2_Dict.hashTable.getN());
         assertArrayEquals(Avl,hashTable_2);
 
 
@@ -125,7 +128,7 @@ public class HashTablesTest {
 
         long start;
         long end;
-        int n = 250;
+        int n = 170;
         String path = "250.txt";
 
         dictionary RedBlack_Dict = new dictionary("RedBlack");
@@ -154,7 +157,7 @@ public class HashTablesTest {
         int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
         end = System.nanoTime();
         long hashTable_2_Time = end - start;
-        hashTable_1_Dict.hashTable.printt();
+//        hashTable_1_Dict.hashTable.printt();
         assertArrayEquals(Avl,RedBlack);
 
         assertArrayEquals(Avl,hashTable_1);
