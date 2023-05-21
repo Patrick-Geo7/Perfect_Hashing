@@ -140,7 +140,7 @@ public class HashTable2Levels implements IHashTable{
         else{
             // collision
             // 10   128  11
-            
+
             if (hash.b < (int) ceil(log(pow(hash.n+1,2))/log(2)))
             {
                 hashmap[index1]= new HashTable1Level(hash.n+1);
@@ -161,6 +161,8 @@ public class HashTable2Levels implements IHashTable{
             if (bool) {
                 n+=1;
                 printSize();
+                System.out.println("the key"+key);
+                printt();
                 System.out.println("inserted after collision");
 //                System.out.println("n="+n);
                 return true;

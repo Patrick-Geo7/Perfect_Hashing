@@ -6,4 +6,5 @@ public interface IDictionnary {
     boolean search(String word);
     int[] batchInsert(String path);
     int[] batchDelete(String path);
+    int getRebuildCount();
 }
