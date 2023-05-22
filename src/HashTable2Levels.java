@@ -250,6 +250,7 @@ public class HashTable2Levels implements IHashTable{
         int index2= hashUtility.getIndex(hash.hashFunction,key);
         return Objects.equals(hash.hashmap[index2], key);
     }
+
     public int getTotalSize(){
         int size=0;
         for (int i=0;i< pow(2,b);i++){
@@ -257,4 +258,5 @@ public class HashTable2Levels implements IHashTable{
         }
         return size;
     }
+
 }

@@ -9,4 +9,5 @@ public interface IHashTable {
     int getN();
     void printt();
     public int getTotalSize();
+
 }
