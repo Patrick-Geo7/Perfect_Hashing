@@ -141,6 +141,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
@@ -276,6 +280,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
     @Test
@@ -410,6 +418,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
@@ -545,6 +557,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
@@ -681,6 +697,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
@@ -817,6 +837,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
@@ -952,6 +976,10 @@ public class HashTablesTest {
         System.out.println("***Number of collisions in hash Tables***");
         System.out.println("one level collisions : " + hashTable_1_Dict.collisions() );
         System.out.println("two levels collisions : " + hashTable_2_Dict.collisions() );
+        System.out.println("===========================================================================================");
+        System.out.println("*** size of hash Tables ***");
+        System.out.println("one level size : " + hashTable_1_Dict.getTableSize() );
+        System.out.println("two levels size : " + hashTable_2_Dict.getTableSize() );
 
     }
 
