@@ -227,4 +227,7 @@ public class HashTable1Level implements IHashTable {
         int index=hashUtility.getIndex(hashFunction,key);
         return Objects.equals(hashmap[index], key);
     }
+    public int getTotalSize(){
+        return (int) pow(2,b);
+    }
 }

@@ -124,6 +124,9 @@ public class Dictionnary implements IDictionnary{
     public int collisions() {
         return this.collisions;
     }
-
+    @Override
+    public int getTableSize() {
+        return hashTable.getTotalSize();
+    }
 
 }

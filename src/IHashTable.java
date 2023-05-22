@@ -8,5 +8,5 @@ public interface IHashTable {
     int getRebuildCount();
     int getN();
     void printt();
-
+    public int getTotalSize();
 }
