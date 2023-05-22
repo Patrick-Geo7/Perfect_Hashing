@@ -150,7 +150,7 @@ public class HashTable2Levels implements IHashTable{
                 hashmap[index1]= new HashTable1Level(hash.n+1);
 //                System.out.println(hashmap[index1].n);
 //                System.out.println("new hash table size");
-                rebuildCount+=1;
+             //   rebuildCount+=1;
 
                 for (String element:hash.hashmap) {
                     if (element != null) {
@@ -177,6 +177,7 @@ public class HashTable2Levels implements IHashTable{
 //            printSize();
 //            printt();
             boolean bool=hashmap[index1].insert(key);
+            rebuildCount+=hashmap[index1].getRebuildCount();
 //            System.out.println("-------------------------------------------------------------------------------------------------");
 //            System.out.println("size after inserrt");
 //            printSize();

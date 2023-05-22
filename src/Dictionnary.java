@@ -18,8 +18,9 @@ public class Dictionnary implements IDictionnary{
     }
     @Override
     public boolean insert(String key) {
-
         boolean flag = hashTable.insert(key);
+        System.out.println("nnnnnnnnnnnnnnnnnnnnnnn");
+        System.out.println(hashTable.getRebuildCount());
         collisions += hashTable.getRebuildCount();
         return flag;
 
@@ -54,6 +55,7 @@ public class Dictionnary implements IDictionnary{
      */
     @Override
     public int[] batchInsert(String path) {
+        collisions=0;
         int[] counters = {0,0};
         int insert_count = 0;
         int exist_count = 0;
@@ -63,7 +65,7 @@ public class Dictionnary implements IDictionnary{
             Scanner myReader = new Scanner(myfile);
             while(myReader.hasNextLine()){
                 String word = myReader.nextLine();
-                boolean inserted = hashTable.insert(word);
+                boolean inserted = this.insert(word);
                 if(inserted){
                     insert_count = insert_count+1;
                 }
