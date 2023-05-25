@@ -31,7 +31,7 @@ public class HashFunc {
     public static int hash(String str) {
 //        int hash = 7;
 //        for (int i = 0; i < str.length(); i++) {
-//            hash = hash*31 + (int) str.charAt(i);
+//            hash = hash*128 + (int) str.charAt(i);
 //        }
 //        int hash=0;
 //        int m=1;
@@ -41,10 +41,12 @@ public class HashFunc {
 //        HashStrings hasher= new HashStrings();
 //        String sha256Hash = hasher.calculateSHA256(str);
 //        return Integer.parseInt(sha256Hash, 16);
+        //last
         int hash = 0;
         for (int i = 0; i < str.length(); i++) {
             hash = str.charAt(i) + ((hash << 5) - hash);
         }
+        //last
 //        hash =str.hashCode();
 
         return hash;

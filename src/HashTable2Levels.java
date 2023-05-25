@@ -13,7 +13,7 @@ public class HashTable2Levels implements IHashTable{
     int b;
     int n;
     int NN;
-    HashTable1Level[] hashmap;
+    public HashTable1Level[] hashmap;
     HashFunc hashUtility= new HashFunc();
     int rebuildCount;
     HashTable1Level[] get_hashtables(){
@@ -111,6 +111,7 @@ public class HashTable2Levels implements IHashTable{
         hashFunction = hashUtility.getHashFuncion(32,b);
     }
 
+
     @Override
     public boolean insert(String key) {
 //        System.out.println("inserttttttttttttttttttttttttt");
@@ -142,7 +143,6 @@ public class HashTable2Levels implements IHashTable{
         else{
             // collision
             // 10   128  11
-
             if (hash.b < (int) ceil(log(pow((hash.n)+1,2))/log(2)))
             {
 //                System.out.println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
@@ -150,7 +150,7 @@ public class HashTable2Levels implements IHashTable{
                 hashmap[index1]= new HashTable1Level(hash.n+1);
 //                System.out.println(hashmap[index1].n);
 //                System.out.println("new hash table size");
-             //   rebuildCount+=1;
+                rebuildCount+=1;
 
                 for (String element:hash.hashmap) {
                     if (element != null) {
@@ -178,6 +178,8 @@ public class HashTable2Levels implements IHashTable{
 //            printt();
             boolean bool=hashmap[index1].insert(key);
             rebuildCount+=hashmap[index1].getRebuildCount();
+            n++;
+            return bool;
 //            System.out.println("-------------------------------------------------------------------------------------------------");
 //            System.out.println("size after inserrt");
 //            printSize();
@@ -186,23 +188,23 @@ public class HashTable2Levels implements IHashTable{
 
 
 //            hashmap[index1].insert(key);
-            if (bool) {
-                n+=1;
-//                System.out.println("inserted after collision");
-//                printSize();
-//                System.out.println("the key"+key + "index" + index1);
-//                printt();
-
-
-//                System.out.println("n="+n);
-//                System.out.println("n="+n);
-                return true;
-            }
-            else{
-//                System.out.println("couldn't insert after collision key already exist");
-//                System.out.println("n="+n);
-                return false;
-            }
+//            if (bool) {
+//                n+=1;
+////                System.out.println("inserted after collision");
+////                printSize();
+////                System.out.println("the key"+key + "index" + index1);
+////                printt();
+//
+//
+////                System.out.println("n="+n);
+////                System.out.println("n="+n);
+//                return true;
+//            }
+//            else{
+////                System.out.println("couldn't insert after collision key already exist");
+////                System.out.println("n="+n);
+//                return false;
+//            }
         }
     }
 
@@ -257,6 +259,10 @@ public class HashTable2Levels implements IHashTable{
             size+=hashmap[i].getTotalSize();
         }
         return size;
+    }
+
+    public int getIndex(String s){
+        return hashUtility.getIndex(hashFunction,s);
     }
 
 }

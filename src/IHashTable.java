@@ -9,5 +9,6 @@ public interface IHashTable {
     int getN();
     void printt();
     public int getTotalSize();
+    public int getIndex(String key);
 
 }

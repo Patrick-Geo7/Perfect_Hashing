@@ -13,7 +13,7 @@ public class HashTable1Level implements IHashTable {
     //u is the length of the actual key
 
     public String[] hashmap;
-    int [][] hashFunction;
+    public int [][] hashFunction;
     int b;
     int n;
     int NN;
@@ -71,7 +71,7 @@ public class HashTable1Level implements IHashTable {
 
             String[] helper;
             while (true){
-                System.out.println("ana ahooooooooooooo ya marioooom");
+//                System.out.println("ana ahooooooooooooo ya marioooom");
                 helper= new String[(int) Math.pow(2,b)];
                 hashFunction= hashUtility.getHashFuncion(32,b);
 //                System.out.println("hash functionnnnnnnnnnn");
@@ -108,14 +108,14 @@ public class HashTable1Level implements IHashTable {
 //                        printHashFunction();
 //                        printt();
 //                        System.out.println(NN);
-                        System.out.println("hablllllllllllllllllll");
+//                        System.out.println("hablllllllllllllllllll");
                     }
                 }
             }
             hashmap=helper.clone();
             n+=1;
-            System.out.println("rehashingggggggggggggg");
-            System.out.println(rebuildCount);
+//            System.out.println("rehashingggggggggggggg");
+//            System.out.println(rebuildCount);
             return true;
         }
 //        printSize();
@@ -229,5 +229,8 @@ public class HashTable1Level implements IHashTable {
     }
     public int getTotalSize(){
         return (int) pow(2,b);
+    }
+    public int getIndex(String key){
+        return hashUtility.getIndex(hashFunction,key);
     }
 }
