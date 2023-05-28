@@ -1006,7 +1006,15 @@ public class HashTablesTest {
         Dictionnary hashTable_1_Dict = new Dictionnary("oneLevel",n);
         Dictionnary hashTable_2_Dict = new Dictionnary("twoLevels",n);
 
+        start = System.nanoTime();
+        int[] hashTable_1 = hashTable_1_Dict.batchInsert(path);
+        end = System.nanoTime();
+        long hashTable_1_Time = end - start;
 
+        start = System.nanoTime();
+        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
+        end = System.nanoTime();
+        long hashTable_2_Time = end - start;
         start = System.nanoTime();
         int[] RedBlack = RedBlack_Dict.batchInsert(path);
         end = System.nanoTime();
@@ -1017,15 +1025,7 @@ public class HashTablesTest {
         end = System.nanoTime();
         long AvlTime = end - start;
 
-        start = System.nanoTime();
-        int[] hashTable_1 = hashTable_1_Dict.batchInsert(path);
-        end = System.nanoTime();
-        long hashTable_1_Time = end - start;
 
-        start = System.nanoTime();
-        int[] hashTable_2 = hashTable_2_Dict.batchInsert(path);
-        end = System.nanoTime();
-        long hashTable_2_Time = end - start;
 
         assertArrayEquals(Avl,RedBlack);
         assertArrayEquals(Avl,hashTable_1);
@@ -1140,10 +1140,10 @@ public class HashTablesTest {
 
         String[] str = new String[]{
                 "ZNBIA",
-                "1nAE8RA",
+                "kHhWL0Uy",
                 "CXKkReX",
-                "4OBaFmN8",
-                "sJmO5hG",
+                "J7pNV1p",
+                "nH8oYDUK",
                 "DApoIG",
                 "0UIXn2",
                 "D7XKb",
@@ -1154,11 +1154,11 @@ public class HashTablesTest {
                 "5Glui2sG",
                 "UwYX7bZ",
                 "oY1z0Ox",
-                "Gzh8d",
+                "IVM2HW",
                 "zw4DfH",
-                "Xdw3m",
-                "ddZIl",
-                "PN8ZFl"
+                "vQrrhZ8h",
+                "jbC8g",
+                "sGxHYyKZ"
         };
 
         dictionary RedBlack_Dict = new dictionary("RedBlack");

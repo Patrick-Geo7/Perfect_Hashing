@@ -1,6 +1,6 @@
 package src.Trees;
 
-public class RedBlack<type> implements Tree<type> {
+public class RedBlack<type> implements Tree<type>{
 
     public RBNode<type> root;
     private RBNode<type> nil=new RBNode<>();

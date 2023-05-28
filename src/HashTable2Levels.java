@@ -108,7 +108,7 @@ public class HashTable2Levels implements IHashTable{
             hashmap[i]= new HashTable1Level(1);
         }
         //initialize the hash function
-        hashFunction = hashUtility.getHashFuncion(32,b);
+        hashFunction = hashUtility.getHashFuncion(64,b);
     }
 
 
@@ -131,6 +131,7 @@ public class HashTable2Levels implements IHashTable{
             n+=1;
             hashmap[index1].n++;
 //            System.out.println("n="+n);
+//            System.out.println("yes");
             return true;
         }
 //        Objects.equals(hash.hashmap[index2], key)

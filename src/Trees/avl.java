@@ -1,11 +1,11 @@
 package src.Trees;
 
-public class avl<type> implements Tree<type> {
+class avl<type> implements Tree<type> {
     avlNode<type> root;
     private int size = 0;
     //private int height;
 
-    public avl() {
+    avl() {
         this.root = null;
     }
 

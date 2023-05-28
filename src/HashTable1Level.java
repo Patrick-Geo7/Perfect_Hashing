@@ -34,7 +34,7 @@ public class HashTable1Level implements IHashTable {
         NN=N;
         //initialize the hashmap , hashfunction and current number of elements in the table
         hashmap = new String[(int) Math.pow(2,b)];
-        hashFunction= hashUtility.getHashFuncion(32,b);
+        hashFunction= hashUtility.getHashFuncion(64,b);
 //        printHashFunction();
         n=0;
     }
@@ -73,7 +73,7 @@ public class HashTable1Level implements IHashTable {
             while (true){
 //                System.out.println("ana ahooooooooooooo ya marioooom");
                 helper= new String[(int) Math.pow(2,b)];
-                hashFunction= hashUtility.getHashFuncion(32,b);
+                hashFunction= hashUtility.getHashFuncion(64,b);
 //                System.out.println("hash functionnnnnnnnnnn");
 //                printHashFunction();
 //                System.out.println(" no of rebuilds"+ rebuildCount);
@@ -116,6 +116,7 @@ public class HashTable1Level implements IHashTable {
             n+=1;
 //            System.out.println("rehashingggggggggggggg");
 //            System.out.println(rebuildCount);
+//            System.out.println("yes");
             return true;
         }
 //        printSize();
